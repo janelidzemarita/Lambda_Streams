@@ -12,6 +12,7 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Set;
+import java.util.SortedSet;
 import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -47,15 +48,18 @@ public class Main {
 		
 		triangleleArrayList.stream().filter(p -> p.isRightTriangle()).forEach(el -> System.out.println(el.getPerimeter()));
 		
-
+		//Task 4
 		Set<Circle> circleSet = CreateTreesets.circlesTreeSet(args[0]);
-		/*
-		 * ok 4. Circle-ების Set-ში იპოვეთ მაქსიმალური ფართობის 
-და მინიმალური წრეწირის სიგრძის მნიშვნელობები.
-		 */
+		
+		SortedSet<Double> d = new TreeSet<>();
+		
+		d.addAll((SortedSet) circleSet);
+		
 		System.out.println("Maximum Area: " + circleSet.stream().sorted().findFirst().get().getArea());
 		
+		System.out.println("Minimum Area: " + d.last());
 		
+		// Task 5
 		
 		Set<Rectangle> rectangleSet = CreateTreesets.rectanglesTreeSet(args[1]);
 		
@@ -65,35 +69,19 @@ public class Main {
 		
 		System.out.println(result3);
 		
-//		Set<Triangle> triangleleSet = CreateTreesets.trianglesTreeSet(args[2]);
-//
-//		getCirlce(circleSet);
-
-
-
-
+		// Task 6
+		
+		Set<Triangle> triangleleSet = CreateTreesets.trianglesTreeSet(args[2]);
+		
+		Set<Double> result4 = new TreeSet<>();
+		
+		triangleleSet.removeIf(el -> el.getPerimeter() <= 29.5);
+		
+		triangleleSet.forEach(el -> result4.add(el.getPerimeter()) );
 
 	}
 	
-	public static void getCirlce(Set<Circle> circle) {
-		TreeSet<Circle> helper = (TreeSet) circle;
-		Circle max = helper.first();
-		Circle min = helper.first();
-		for (Circle element : helper) {
-			if (element.getArea() > max.getArea()) {
-				max = element;
-			}
-			if(element.getPerimeter() < min.getPerimeter()) {
-				min = element;
-			}
-		}
-		System.out.println("Maximum Circle Area is: " + max.getArea());
-		System.out.println("Minimum Circle Perimter is: " + min.getPerimeter());
-	}
 
-	
-
-	
 	public static ArrayList<Figure> getMinMax(ArrayList<Circle> circleArrayList,
 			ArrayList<Rectangle> rectangleArrayList, ArrayList<Triangle> triangleleArrayList) {
 

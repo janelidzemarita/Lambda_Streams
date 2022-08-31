@@ -57,7 +57,14 @@ public class Main {
 		
 		
 		
-//		Set<Rectangle> rectangleSet = CreateTreesets.rectanglesTreeSet(args[1]);
+		Set<Rectangle> rectangleSet = CreateTreesets.rectanglesTreeSet(args[1]);
+		
+		Set<Rectangle> result3 = new TreeSet<>();
+		
+		rectangleSet.stream().filter(p -> p.calculateDiagonal() >= 50).forEach(el -> result3.add(el));
+		
+		System.out.println(result3);
+		
 //		Set<Triangle> triangleleSet = CreateTreesets.trianglesTreeSet(args[2]);
 //
 //		getCirlce(circleSet);

@@ -16,6 +16,8 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 
 public class Main {
@@ -78,9 +80,26 @@ public class Main {
 		triangleleSet.removeIf(el -> el.getPerimeter() <= 29.5);
 		
 		triangleleSet.forEach(el -> result4.add(el.getPerimeter()) );
-
+		
+		// Task7
+		
+		//Task 10 check
+		int x = 100;
+		
+		System.out.println(isPrime(97));
+		for(int i = 0; i < x; i++) {
+			if(isPrime(i)) {
+				System.out.println(i);
+			}
+			
+		}
+		
+		
 	}
-	
+	//Task 10
+	public static boolean isPrime(int num) {
+	    return num > 1 && java.math.BigInteger.valueOf(num).isProbablePrime(20);
+	  }
 
 	public static ArrayList<Figure> getMinMax(ArrayList<Circle> circleArrayList,
 			ArrayList<Rectangle> rectangleArrayList, ArrayList<Triangle> triangleleArrayList) {
